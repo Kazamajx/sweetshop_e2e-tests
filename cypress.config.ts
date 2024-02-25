@@ -18,7 +18,7 @@ module.exports = defineConfig({
       return config;
     },
     specPattern: "**/*.feature",
-    baseUrl: "https://hyntelo.com",
+    baseUrl: "https://sweetshop.netlify.app",
   },
   reporter: "junit",
   reporterOptions: {
