@@ -1,7 +1,7 @@
 import { Then } from "@badeball/cypress-cucumber-preprocessor";
 
 import aboutPage from "../page-objects/about-page";
-import * as aboutStrings from "../strings/about-page";
+import * as aboutStrings from "../strings/about-strings";
 
 Then("User sees services about the Sweets Shops website", () => {
   aboutPage.elements
