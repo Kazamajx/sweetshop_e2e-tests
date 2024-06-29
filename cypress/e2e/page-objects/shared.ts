@@ -26,6 +26,14 @@ class Shared {
   clickBasketButton() {
     this.elements.basketButtonNavbar().click();
   }
+
+  getTitleTab() {
+    return cy.title();
+  }
+
+  getCurrentUrl() {
+    return cy.url();
+  }
 }
 
 const shared = new Shared();

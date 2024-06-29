@@ -7,5 +7,9 @@ Given("User visits the {string} url", (url: string) => {
 });
 
 Then("User sees {string} title in the tab", (title: string) => {
-  cy.title().should("eq", title);
+  shared.getTitleTab().should("eq", title);
+});
+
+Then("User sees {string} url in the searchbar", (url: string) => {
+  shared.getCurrentUrl().should("eq", `${Cypress.config().baseUrl}${url}`);
 });

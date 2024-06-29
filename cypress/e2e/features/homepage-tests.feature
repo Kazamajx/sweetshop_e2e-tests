@@ -1,8 +1,9 @@
-Feature: Sweet Shop Homepage
+Feature: Sweets Shop Homepage
 
     Scenario Outline: Verify that the user sees the Sweet Shop Homepage
         Given User visits the <url> url
         Then User sees <title> title in the tab
+        * User sees <url> url in the searchbar
 
         Examples:
             | url | title        |
