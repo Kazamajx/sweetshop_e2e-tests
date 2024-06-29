@@ -1,21 +1,11 @@
 class HomePage {
-  salesImageSelector: string = "body > div > header > div > img";
-  welcomeTextSelector: string = "body > div > header > h1";
-  browseSweetsButtonSelector: string = "body > div > header > a";
-  popularSweetsCardsSelector: string = ".cards";
-
   elements = {
-    get salesImage() {
-      return;
-    },
+    browseSweetsButton: () => cy.get("body > div > header > a"),
+    mostPopularRetroSweets: () => cy.get(".cards"),
   };
 
-  visitExamplePage() {
-    cy.visit("/");
-  }
-
-  assertTitle(title: string) {
-    cy.title().should("eq", title);
+  clickSweetsButton() {
+    this.elements.browseSweetsButton().click();
   }
 }
 
