@@ -43,8 +43,8 @@ Feature: Sweets Shop Login page
         * User sees the Your account page
 
         Examples:
-            | url      | email             | password |
-            | "/login" | "email@gmail.com" | "tttt"   |
+            | url      | email             | password | title        |
+            | "/login" | "email@gmail.com" | "tttt"   | "Sweet Shop" |
             
 
     
