@@ -1,4 +1,4 @@
-import { Then, When } from "@badeball/cypress-cucumber-preprocessor";
+import { When, Then } from "@badeball/cypress-cucumber-preprocessor";
 
 import homePage from "../page-objects/home-page";
 
