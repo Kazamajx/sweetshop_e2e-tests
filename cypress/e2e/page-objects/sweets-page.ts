@@ -8,6 +8,12 @@ class SweetsPage {
     sweetsPrices: () => cy.get(".text-muted"),
     sweetsAddToBasketButton: () => cy.get(".btn"),
   };
+
+  clickAddToBasketButton(number: number) {
+    for (let i = 0; i < number; i++) {
+      cy.get(".card").eq(i).find(".btn").click();
+    }
+  }
 }
 
 const sweetsPage = new SweetsPage();

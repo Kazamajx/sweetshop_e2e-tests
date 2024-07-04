@@ -13,3 +13,12 @@ Then("User sees {string} title in the tab", (title: string) => {
 Then("User sees {string} url in the searchbar", (url: string) => {
   shared.getCurrentUrl().should("eq", `${Cypress.config().baseUrl}${url}`);
 });
+
+Then(
+  "User sees {string} number of sweets added to the basket in the navbar",
+  (numberOfSweets: number) => {
+    shared.elements
+      .numberSweetsBasketNavbar()
+      .should("have.text", numberOfSweets);
+  }
+);

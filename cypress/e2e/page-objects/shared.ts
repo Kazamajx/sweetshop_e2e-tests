@@ -5,6 +5,7 @@ class Shared {
     aboutButtonNavbar: () => cy.get("#navbarColor01 > ul > li:nth-child(2)"),
     loginButtonNavbar: () => cy.get("#navbarColor01 > ul > li:nth-child(3)"),
     basketButtonNavbar: () => cy.get("#navbarColor01 > ul > li:nth-child(4)"),
+    numberSweetsBasketNavbar: () => cy.get(".badge"),
   };
 
   visitUrl(url: string) {

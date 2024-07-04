@@ -22,8 +22,20 @@ Feature: Sweets Shop Sweets page
         Then User sees an image within each sweet card
         * User sees a title within each sweet card
         * User sees a subtitle within each sweet card
+        * User sees a price within each sweet card
         * User sees an Add to basket button within each sweet card
 
         Examples:
             | url       |
             | "/sweets" |
+
+    Scenario Outline: Verify that the user can add to the basket some sweets
+        Given User visits the <url> url
+        When User adds to the basket <number> sweets clicking on the Add to Basket button
+        Then User sees <number> number of sweets added to the basket in the navbar
+
+        Examples:
+            | url       | number |
+            | "/sweets" | "3"    |
+            | "/sweets" | "5"    |
+   
