@@ -26,3 +26,11 @@ Feature: Sweets Shop Homepage
         Examples:
             | url |
             | "/" |
+    
+    Scenario Outline: Verify that user see 0 sweets in the basket by default
+        Given User visits the <url> url
+        Then User sees 0 sweets in the basket by default
+
+        Examples:
+            | url |
+            | "/" |

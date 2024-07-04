@@ -22,3 +22,7 @@ Then(
       .should("have.text", numberOfSweets);
   }
 );
+
+Then("User sees 0 sweets in the basket by default", () => {
+  shared.elements.numberSweetsBasketNavbar().should("have.text", 0);
+});
