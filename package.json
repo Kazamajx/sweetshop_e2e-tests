@@ -6,7 +6,9 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "cypress:run": "cypress run",
-    "cypress:debug": "cross-env CYPRESS_REMOTE_DEBUGGING_PORT=9222 cypress open"
+    "cypress:debug": "cross-env CYPRESS_REMOTE_DEBUGGING_PORT=9222 cypress open",
+    "cypress:run:desktop": "npx cypress run --env configFile=cypress.config.desktop",
+    "cypress:run:mobile": "npx cypress run --env configFile=cypress.config.mobile"
   },
   "author": "",
   "license": "ISC",

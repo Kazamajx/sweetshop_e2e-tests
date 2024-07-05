@@ -1,3 +1,5 @@
+const fs = require("fs-extra");
+const path = require("path");
 const { defineConfig } = require("cypress");
 const createBundler = require("@bahmutov/cypress-esbuild-preprocessor");
 const addCucumberPreprocessorPlugin =
@@ -5,9 +7,18 @@ const addCucumberPreprocessorPlugin =
 const createEsbuildPlugin =
   require("@badeball/cypress-cucumber-preprocessor/esbuild").createEsbuildPlugin;
 
+function getConfigurationByFile(file: string) {
+  const pathToConfigFile = path.resolve(".", "config", `${file}.json`);
+  return fs.readJson(pathToConfigFile);
+}
+
 module.exports = defineConfig({
   e2e: {
     async setupNodeEvents(on: any, config: any) {
+      // Choose the correct file config
+      const file = config.env.configFile || "cypress.config.test";
+      const envConfig = await getConfigurationByFile(file);
+
       const bundler = createBundler({
         plugins: [createEsbuildPlugin(config)],
       });
@@ -15,10 +26,10 @@ module.exports = defineConfig({
       on("file:preprocessor", bundler);
       await addCucumberPreprocessorPlugin(on, config);
 
-      return config;
+      // Override the default fields and return the new configuration
+      return { ...config, ...envConfig };
     },
     specPattern: "**/*.feature",
-    baseUrl: "https://sweetshop.netlify.app",
   },
   reporter: "junit",
   reporterOptions: {
