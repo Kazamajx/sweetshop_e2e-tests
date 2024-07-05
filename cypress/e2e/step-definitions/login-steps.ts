@@ -1,4 +1,4 @@
-import { When, Then } from "@badeball/cypress-cucumber-preprocessor";
+import { Given, When, Then } from "@badeball/cypress-cucumber-preprocessor";
 
 import loginPage from "../page-objects/login-page";
 import * as loginStrings from "../strings/login-strings";
@@ -50,5 +50,14 @@ Then(
       .passwordError()
       .should("be.visible")
       .and("have.text", loginStrings.passwordErrorString);
+  }
+);
+
+Given(
+  "User is logged into the Sweets Shop platorm with {string} email and {string} password",
+  (email: string, password: string) => {
+    loginPage.typeEmail(email);
+    loginPage.typePassword(password);
+    loginPage.clickLogin();
   }
 );

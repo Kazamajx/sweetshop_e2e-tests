@@ -9,3 +9,20 @@ Then("User sees the Your account page", () => {
     .should("be.visible")
     .and("have.text", yourAccountStrings.yourAccountTitleString);
 });
+
+Then(
+  "User sees the {string} email in the Your account page",
+  (email: string) => {
+    yourAccountPage.elements
+      .emailAddressText()
+      .should("be.visible")
+      .and("have.text", email);
+  }
+);
+
+Then(
+  "User sees the number of sweets ordered in the last months in the Your Account page",
+  () => {
+    yourAccountPage.elements.sweetsOrderedChart().should("be.visible");
+  }
+);
