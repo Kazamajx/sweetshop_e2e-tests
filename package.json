@@ -8,7 +8,10 @@
     "cypress:run": "cypress run",
     "cypress:debug": "cross-env CYPRESS_REMOTE_DEBUGGING_PORT=9222 cypress open",
     "cypress:run:desktop": "npx cypress run --env configFile=cypress.config.desktop",
-    "cypress:run:mobile": "npx cypress run --env configFile=cypress.config.mobile"
+    "cypress:run:mobile": "npx cypress run --env configFile=cypress.config.mobile",
+    "test:chrome": "cypress run --browser chrome",
+    "test:firefox": "cypress run --browser firefox",
+    "test:edge": "cypress run --browser edge"
   },
   "author": "",
   "license": "ISC",
