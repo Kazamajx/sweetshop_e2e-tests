@@ -24,7 +24,7 @@ jobs:
 
       # Step 3: Install dependencies
       - name: Install dependencies
-        run: npm install
+        run: install
 
       # Step 4: Clean previous Cypress results
       - name: Clean Cypress results
