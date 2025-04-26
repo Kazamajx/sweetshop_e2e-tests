@@ -1,0 +1,76 @@
+name: E2E Tests
+
+on:
+  workflow_dispatch: # Manual trigger
+    inputs:
+      CustomCommand:
+        description: 'Custom Cypress command'
+        required: true
+      WorkingDir:
+        description: 'Working directory for Cypress'
+        required: true
+  schedule:          # Scheduled trigger
+    - cron: "0 0 * * *" # Daily midnight build
+
+jobs:
+  e2e-tests:
+    runs-on: ubuntu-latest
+    
+    steps:
+      # Checkout code
+      - name: Checkout code
+        uses: actions/checkout@v3
+
+      # Set up Node.js
+      - name: Set up Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: 16
+
+      # Install dependencies
+      - name: Install dependencies
+        run: npm install
+
+      # Run tests
+      - name: Run Cypress Tests
+        run: npm run ${{ inputs.CustomCommand }}
+        env:
+          CYPRESS_WORKING_DIR: ${{ inputs.WorkingDir }}
+
+      # Check for screenshots
+      - name: Check for screenshots
+        run: |
+          if [ -d cypress/screenshots ]; then
+            echo "SCREENSHOTSEXIST=true" >> $GITHUB_ENV
+          fi
+
+      # Upload screenshots if they exist
+      - name: Upload screenshots
+        if: env.SCREENSHOTSEXIST == 'true'
+        uses: actions/upload-artifact@v3
+        with:
+          name: screenshots
+          path: cypress/screenshots
+
+      # Check for videos if they exist
+      - name: Check for videos
+        run: |
+          if [ -d cypress/videos ]; then
+            echo "VIDEOSEXIST=true" >> $GITHUB_ENV
+          fi
+      
+      # Upload videos if they exist
+      - name: Upload videos
+        if: env.VIDEOSEXIST == 'true'
+        uses: actions/upload-artifact@v3
+        with:
+          name: videos
+          path: cypress/videos
+
+      # Publish Cucumber Report
+      - name: Publish Test Results
+        uses: actions/upload-artifact@v3
+        with:
+          name: test-results
+          path: cypress/results/**/*.xml
+      
