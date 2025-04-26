@@ -19,7 +19,7 @@ jobs:
     steps:
       # Checkout code
       - name: Checkout code
-        uses: actions/checkout@v3
+        uses: actions/checkout@v4
 
       # Set up Node.js
       - name: Set up Node.js
@@ -47,7 +47,7 @@ jobs:
       # Upload screenshots if they exist
       - name: Upload screenshots
         if: env.SCREENSHOTSEXIST == 'true'
-        uses: actions/upload-artifact@v2
+        uses: actions/upload-artifact@v3
         with:
           name: screenshots
           path: cypress/screenshots
@@ -62,14 +62,14 @@ jobs:
       # Upload videos if they exist
       - name: Upload videos
         if: env.VIDEOSEXIST == 'true'
-        uses: actions/upload-artifact@v2
+        uses: actions/upload-artifact@v3
         with:
           name: videos
           path: cypress/videos
 
       # Publish Cucumber Report
       - name: Publish Test Results
-        uses: actions/upload-artifact@v2
+        uses: actions/upload-artifact@v3
         with:
           name: test-results
           path: cypress/results/**/*.xml
