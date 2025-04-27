@@ -43,5 +43,9 @@
       "[filepath].{js,ts}",
       "cypress/e2e/**/*.{js,ts}"
     ]
+  },
+  "dependencies": {
+    "chart.js": "^4.4.9",
+    "chartjs-node-canvas": "^5.0.0"
   }
 }
