@@ -73,4 +73,15 @@ jobs:
         with:
           name: test-results
           path: cypress/results/**/*.xml
+
+      # Generate Pie Chart
+      - name: Generate Pie Chart
+        run: node config/generate-pie-chart.js
+
+      # Publish Pie Chart
+      - name: Upload Pie Chart
+        uses: actions/upload-artifact@v4
+        with:
+          name: test-results-chart
+          path: cypress/generated/test-results-chart.png
       

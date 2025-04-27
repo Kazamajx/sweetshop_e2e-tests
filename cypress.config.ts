@@ -16,7 +16,7 @@ module.exports = defineConfig({
   e2e: {
     async setupNodeEvents(on: any, config: any) {
       // Choose the correct file config
-      const file = config.env.configFile || "cypress.config.desktop";
+      const file = config.env.configFile ?? "cypress.config.desktop";
       const envConfig = await getConfigurationByFile(file);
 
       const bundler = createBundler({
