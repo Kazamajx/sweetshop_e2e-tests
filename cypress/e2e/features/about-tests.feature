@@ -4,7 +4,7 @@ Feature: Sweets Shop About page
         Given User visits the <url> url
         Then User sees <title> title in the tab
         * User sees <url> url in the searchbar
-        * User sees services about the Sweets Shops website
+        * User sees services about the Sweets Shops websi
 
         Examples:
             | url      | title        |
