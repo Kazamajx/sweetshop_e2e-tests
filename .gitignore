@@ -367,5 +367,5 @@ FodyWeavers.xsd
 # Videos and screenshots generated from the test execution in background
 cypress/videos/
 cypress/results/
-cypress/generated/
+cypress/generated/**/*.json
 cypress/screenshots/
