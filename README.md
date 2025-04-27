@@ -8,3 +8,7 @@ This project is about e2e testing for "Sweet Shop" project. E2E tests are writte
 
 # Build and Test
 1. You can build tests and open cypress emulator running the command: "npx cypress open".
+
+# Test results
+Below Test results pie chart that will be updated every day.
+![Test Results Pie Chart](cypress/generated/test-results-chart.png)
